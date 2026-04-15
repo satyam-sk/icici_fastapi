@@ -299,7 +299,7 @@ async def block_credit_card(request: CardBlockRequest):
             with conn.cursor() as cur:
                 # Check if card exists and belongs to customer
                 cur.execute("""
-                    SELECT card_id, card_last4, card_status, card_type
+                    SELECT card_id, card_last4, card_status
                     FROM cards
                     WHERE cust_id = %s AND card_last4 = %s
                 """, (request.customer_id, request.card_last4))
